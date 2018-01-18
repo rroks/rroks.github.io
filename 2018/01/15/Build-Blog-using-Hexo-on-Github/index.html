@@ -194,6 +194,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
 <h3 id="初始化Hexo项目"><a href="#初始化Hexo项目" class="headerlink" title="初始化Hexo项目"></a>初始化Hexo项目</h3><p>通过以下命令初始化一个新建项目：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
 <p><code>&lt;folder&gt;</code>替换为项目名称，在这里我们使用<code>blog</code>作为项目名称<br><code>npm install</code>命令安装依赖</p>
+<blockquote>
+<p>可以在<code>_config.yml</code>中更改博客的配置<br>但是必须要注意的是，hexo对空格敏感，属性名（例如title: username)的冒号之后不能省略一个空格，否则不能生效</p>
+</blockquote>
 <p>运行generate指令，生成静态文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
 <p>或者使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
 <p>接着使用server命令，启动一个local server来查看项目：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
@@ -202,6 +205,23 @@
 <h3 id="创建新博客内容"><a href="#创建新博客内容" class="headerlink" title="创建新博客内容"></a>创建新博客内容</h3><p>在blog目录下，输入指令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new blog_name</span><br></pre></td></tr></table></figure></p>
 <p>在/blog/source/_post/下能看到新生成的blog_name.md文件<br>可以使用markdown语言编辑文件内容<br>markdown用法参见<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">Mastering Markdown</a></p>
 <h3 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h3><p>在发布博客之前，我们需要配置好git<br>登陆<a href="https://github.com/" target="_blank" rel="noopener">github官网地址</a>进行账号注册</p>
+<h4 id="添加ssh-key"><a href="#添加ssh-key" class="headerlink" title="添加ssh key"></a>添加ssh key</h4><p>首先，在终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure></p>
+<p>进入ssh文件夹。如果显示<code>No such file or directory</code>，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>生成ssh key<br><code>your_email@example.com</code>替换为注册的邮箱账号<br>过程中将提示你输入passphrase，如果不输入直接回车则表示无passphrase<br>然后执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -K ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
+<p>将ssh key添加到key文件中<br>然后输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
+<p>获取生成的ssh key<br>接下来，在GitHub上点击右上角头像，选择<code>Settings</code>进入设置页面，选择<code>SSH and GPG keys</code>，<br>点击<code>New SSH key</code>将ssh key添加到<code>Key</code>栏中，编辑<code>Title</code>来标记该ssh key</p>
+<blockquote>
+<p>在第一次尝试连接GitHub时会询问用户是否想要连接到GitHub，输入yes即可</p>
+</blockquote>
+<h4 id="新建Repository"><a href="#新建Repository" class="headerlink" title="新建Repository"></a>新建Repository</h4><p>在个人主页点击<code>Repositories</code>分页，右上角点击<code>New</code>按钮，新建一个repository</p>
+<blockquote>
+<p>也可以在登陆后，直接进入<a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
+</blockquote>
+<p>在<code>Repository name</code>栏输入<code>username.github.io</code><br><code>username</code>替换为你的用户名，其必须和你的用户名一致<br>之后将可以通过<code>username.github.io</code>访问你的博客</p>
+<h3 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h3><p>接下来，在blog目录下输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git –save</span><br></pre></td></tr></table></figure></p>
+<p>来安装hexo的git部署器<br>在_config.yml中添加部署配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt;</span><br><span class="line">  branch: [branch]</span><br><span class="line">  message: [message]</span><br></pre></td></tr></table></figure></p>
+<p><code>repository url</code>替换为<code>https://github.com/username/username.github.io</code>格式<br><code>username</code>为你的用户名，<code>branch</code>项改为<code>master</code>，<code>message</code>项可以留空。<br>修改完成后，在terminal输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>生成静态文件并部署至GitHub。<br>接下来，用户就可以前往<code>username.github.io</code>查看自己的博客</p>
 <p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
 <p><img src="0000.jpg" alt="Jeanne d&#39;Arc"></p>
 <p>..-. . -.</p>
