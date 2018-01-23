@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="hexo-soundcloud is a simple Hexo plugin that allows you to embed SoundCloud in your webpage.We can get it via npm command:12#添加插件npm install hexo-soun">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="FenC"/>
+        <meta property="og:title" content="SoundCloud on Hexo"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>hexo - FenC</title>
+    <title>SoundCloud on Hexo - FenC</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -142,49 +144,67 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/0004.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>#hexo</h1>
+                <div class="post-heading">
+                    <h1>SoundCloud on Hexo</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-01-23
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/01/15/Build-Blog-using-Hexo-on-Github/">
-        <h1 class="post-title archive">
-            Build Blog using Hexo on Github
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-15
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmaureenshintadevi%2Fstand-by-me-ben-e-king-1961&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
+<p><a href="https://github.com/andrewboni/hexo-soundcloud" target="_blank" rel="noopener">hexo-soundcloud</a> is a simple Hexo plugin that allows you to embed SoundCloud in your webpage.<br>We can get it via <code>npm</code> command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#添加插件</span><br><span class="line">npm install hexo-soundcloud --save</span><br></pre></td></tr></table></figure></p>
+<p>And then, add the plugin into <code>_config.yml</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#将插件添加到_config.yml文件中</span><br><span class="line">plugins:</span><br><span class="line">  hexo-soundcloud</span><br></pre></td></tr></table></figure></p>
+<p>After that, you could add a tag to your post:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用markdownt添加插件</span><br><span class="line">&#123;% soundcloud soundcloud_url %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>However, I found that hexo-soudcl didn’t provide function to autoplay the music after opening a new webpage when I was writing my blog.<br>If you are going to make it autoplay the music, you would have to configure it manually.<br>The plugin is the folder:<br><code>/blog/node_modules/hexo-soundcloud</code></p>
+<p>In<br><code>/blog/node_modules/hexo-soundcloud/dist/hexo-soundcloud.js /blog/node_modules/hexo-soundcloud/dist/hexo-soundcloud.min.js /blog/node_modules/hexo-soundcloud/src/hexo-soundcloud.coffee</code><br>find a variable namely <code>auto_play</code> and change its value to <code>true</code>.</p>
+<h5 id="hexo的源码在上面的路径中，相应修改三个文件中auto-play的值即可实现自动播放"><a href="#hexo的源码在上面的路径中，相应修改三个文件中auto-play的值即可实现自动播放" class="headerlink" title="hexo的源码在上面的路径中，相应修改三个文件中auto_play的值即可实现自动播放"></a>hexo的源码在上面的路径中，相应修改三个文件中auto_play的值即可实现自动播放</h5><h5 id="如果要更丰富的功能…那只能自己改插件源码"><a href="#如果要更丰富的功能…那只能自己改插件源码" class="headerlink" title="如果要更丰富的功能…那只能自己改插件源码"></a>如果要更丰富的功能…那只能自己改插件源码</h5><p>Do remember to save these changes and regenerate statistic files, and then you can see those modifications work.</p>
+<p><a href="https://yuumei.deviantart.com/art/Storm-Inside-682231772" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/45f0/f/2017/143/6/7/storm_inside_by_yuumei-dba6lek.jpg" alt="Storm Inside"></a></p>
+<p>..-. . -.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />

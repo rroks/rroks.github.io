@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="安装mysql&amp;amp;mariadbMac下安装homebrew安装首先执行：1brew search mysql
+来搜索电脑上的mysql，如果已安装，直接使用即可如果要更换版本应使用:1brew upgrade MySQL
+如果未安装，可以通过：1brew install mysql
+or1b">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Fen Chy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Retrieve Data from Remote MySQL Server"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="FenC"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Retrieve Data from Remote MySQL Server - FenC</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">-.-. -.-.</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/rroks">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/0004.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Retrieve Data from Remote MySQL Server</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-01-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fjimmy30312%2Fao-no-exorcist-blue-exorcist-4&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
+<h2 id="安装mysql-amp-mariadb"><a href="#安装mysql-amp-mariadb" class="headerlink" title="安装mysql&amp;mariadb"></a>安装mysql&amp;mariadb</h2><h3 id="Mac下安装"><a href="#Mac下安装" class="headerlink" title="Mac下安装"></a>Mac下安装</h3><h4 id="homebrew安装"><a href="#homebrew安装" class="headerlink" title="homebrew安装"></a>homebrew安装</h4><p>首先执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew search mysql</span><br></pre></td></tr></table></figure></p>
+<p>来搜索电脑上的mysql，如果已安装，直接使用即可<br>如果要更换版本应使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade MySQL</span><br></pre></td></tr></table></figure></p>
+<p>如果未安装，可以通过：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql@major.minor</span><br></pre></td></tr></table></figure></p>
+<p>来安装<br><code>major</code>代表大版本，<code>minor</code>代表小版本，例如安装mysql5.6指令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql@5.6</span><br></pre></td></tr></table></figure></p>
+<p>brew会帮用户配置好环境，安装完成即可使用mysql的一系列命令<br>可以通过mysql help查询，mysql的默认用户为root，没有密码（如果有密码，应同为root）<br>通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure></p>
+<p>登陆本地mysql server<br>（登陆指令有非常多种组合，若有疑问，请百度，或先自己尝试）</p>
+<blockquote>
+<p>更改密码指令为<code>mysqladmin -u root -p password &quot;newpassword&quot;</code>，newpassword替换为想要的密码，若为<code>&quot;&quot;</code>表示不需要密码</p>
+</blockquote>
+<h4 id="rpm文件安装"><a href="#rpm文件安装" class="headerlink" title="rpm文件安装"></a>rpm文件安装</h4><p>如果想要删除homebrew安装的mysql，请先uninstall之后，在目录下删除mysql相关的目录及文件再进行安装<br>否则可能导致冲突，使mysql安装后却无法使用</p>
+<p>一般个人用户使用<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL Community Server</a>，可以根据自己操作系统进行选择<br>安装成功后可以在<code>system preference</code>中看到mysql图标，点击进入，通过面板上的按钮来启动或停止mysql server<br>(更改配置文件时，建议先停止mysql server，以免出现未知问题)<br>安装时会自动生成一个密码，记住它，在之后需要它来登陆、修改密码等<br>但是通过rpm安装，mysql就需要手动添加至系统环境变量<br>首先输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bahs_profile</span><br></pre></td></tr></table></figure></p>
+<p>将mysql添加至系统环境变量中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#mysql</span><br><span class="line">export PATH=&quot;/usr/local/mysql/bin/:$PATH&quot;</span><br></pre></td></tr></table></figure></p>
+<p>保存关闭文件，在命令行输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>使该配置生效，接下来，我们就可以输入mysql相关指令进行操作</p>
+<h3 id="Centos7下安装"><a href="#Centos7下安装" class="headerlink" title="Centos7下安装"></a>Centos7下安装</h3><p>在CentOS7中，yum中的数据库替换为了mariadb<br>mariadb基本兼容mysql<br>(7以下版本没有尝试过，如果有需要请参照<a href="https://mariadb.com/kb/zh-cn/installing-mariadb-with-yum/" target="_blank" rel="noopener">官网</a>)<br>首先检查系统中是否已安装mariadb：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list maria*</span><br></pre></td></tr></table></figure></p>
+<p>如果已安装老版本的mariadb，要进行更新，应该先remove已有的mariadb-libs</p>
+<p>安装mariadb指令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install MariaDB-server MariaDB-client</span><br></pre></td></tr></table></figure></p>
+<p>对于mariadb的启用与停止，使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start/stop/restart mariadb</span><br></pre></td></tr></table></figure></p>
+<p>来进行操作<br>如果发生了什么错误，请在<code>/var/log/mariadb/mariadb.log</code>查看日志</p>
+<h2 id="远程获取数据"><a href="#远程获取数据" class="headerlink" title="远程获取数据"></a>远程获取数据</h2><p><em>使用mysqldump</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -proot -hhost database_name table_name &gt; /path/to/target/file/file_name.sql</span><br></pre></td></tr></table></figure>
+<p><code>--where=&quot;1 other_commands&quot;</code>附加搜索条件，开头的数值<code>1</code>表示<code>select *</code><br><code>--no_data</code>表示指提取数据库表结构<br><code>--no-create-info</code>指提取数据<br><code>--fields-terminated-by=, --fields-enclosed-by=&#39;&quot;&#39;</code>用于输出csv格式，属性分隔符<code>,</code>，以<code>&quot;</code>括起</p>
+<p>大部分情况可以使用，如果遇到错误，先排查是否属于权限不足（包括用户权限，目标路径的权限）</p>
+<p>导出成<code>.csv</code>格式也可以使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -A database_name -hhost -uroot -proot -ss -e &quot;SELECT * from table_name;&quot; | sed &apos;s/\t/&quot;,&quot;/g;s/^/&quot;/;s/$/&quot;/;s/\n//g&apos; &gt; /path/to/target/file/file_name.csv</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>csv只是一种文本规范，本质上还是纯文本格式</p>
+</blockquote>
+<p><em>使用mysql commands导出</em></p>
+<p>首先使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT @@GLOBAL.secure_file_priv;</span><br></pre></td></tr></table></figure></p>
+<p>查询mysql的文件导入导出路径</p>
+<p>在mysql client中，使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table_name into outfile &apos;/var/lib/mysql-files/ebike_record.csv&apos; fields terminated by &apos;,&apos; enclosed by &apos;&quot;&apos; lines terminated by &apos;\n&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>导出文本，需要补足分隔符、换行符等。</p>
+<p><em>大量数据导出</em></p>
+<p>首先执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql --help</span><br></pre></td></tr></table></figure></p>
+<p>将提示<code>Default options are read from the following files in the given order:
+/etc/mysql/my.cnf /etc/my.cnf ~/.my.cnf</code><br>意思是mysql将按以下顺序读取配置文件。不同系统的配置文件存放的目录不同。<br>我设置过的属性为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">innodb_buffer_pool_size = 4G</span><br><span class="line">innodb_log_buffer_size = 268435456</span><br><span class="line">innodb_log_file_size = 1G</span><br><span class="line">innodb_write_io_threads = 16</span><br><span class="line">innodb_flush_log_at_trx_commit = 0</span><br><span class="line">max_allowed_packet=1024M</span><br></pre></td></tr></table></figure></p>
+<p>应根据各自需求，查看文档进行设置。<br>注意上下限问题，以及更改配置时，最好关闭mysql server</p>
+<h4 id="InnoDB-Error"><a href="#InnoDB-Error" class="headerlink" title="InnoDB Error"></a>InnoDB Error</h4><p>如果遇到了与InnoDB相关的错误，首先在mysql中输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &apos;innodb_fast_shutdown&apos;</span><br><span class="line">SET GLOBAL innodb_fast_shutdown=1;</span><br></pre></td></tr></table></figure></p>
+<p>innodb_fast_shutdown与server关闭速度有关，查看<a href="http://dbadiaries.com/how-to-resize-mysql-innodb-log-files-without-errors/" target="_blank" rel="noopener">这里</a>以及<a href="https://serverfault.com/questions/104014/innodb-error-log-file-ib-logfile0-is-of-different-size" target="_blank" rel="noopener">这里</a><br>然后停止mysql server<br>接下来删除<br><code>/var/lib/mysql</code>（CentOS7）<br>或<br><code>/usr/local/mysql/data</code>（Mac）<br>目录下的<code>ib_logfile*</code>文件<br>然后修改配置，保存之后启动服务</p>
+<p><a href="https://miura-n315.deviantart.com/art/Aozaki-Touko-709741341" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/4b84/f/2017/287/e/1/aozaki_touko_by_miura_n315-dbqk7x9.png" alt="Aozaki Touko"></a></p>
+<p>..-. . -.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/rroks" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 Fen Chy<br></p>
+                <p class="copyright text-muted">
+                    <a target="_blank" href="http://www.gu6s.top/">闪电的6s</a>
+                    <a target="_blank" href="http://gzh.autyan.net/">6s掌控雷电</a>
+                    <a target="_blank" href="http://58.87.72.131:8080/w/hello">w</a>
+                    <a target="_blank" href="http://druid.pub/">常威说他缺911</a>
+                    <a target="_blank" href="http://www.yulaiz.com/">地王</a>
+                    <a target="_blank" href="http://ikoala.net/">考拉</a>
+                    <a target="_blank" href="http://baobaolei.cn/">大银蛇</a>
+                    <br>
+                </p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
