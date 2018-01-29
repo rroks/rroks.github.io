@@ -74,7 +74,7 @@ or1b">
 
     <!-- favicon -->
     
-	
+
 </head>
 
 
@@ -202,7 +202,7 @@ or1b">
 <p>使该配置生效，接下来，我们就可以输入mysql相关指令进行操作</p>
 <h3 id="Centos7下安装"><a href="#Centos7下安装" class="headerlink" title="Centos7下安装"></a>Centos7下安装</h3><p>在CentOS7中，yum中的数据库替换为了mariadb<br>mariadb基本兼容mysql<br>(7以下版本没有尝试过，如果有需要请参照<a href="https://mariadb.com/kb/zh-cn/installing-mariadb-with-yum/" target="_blank" rel="noopener">官网</a>)<br>首先检查系统中是否已安装mariadb：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list maria*</span><br></pre></td></tr></table></figure></p>
 <p>如果已安装老版本的mariadb，要进行更新，应该先remove已有的mariadb-libs</p>
-<p>安装mariadb指令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install MariaDB-server MariaDB-client</span><br></pre></td></tr></table></figure></p>
+<p>安装mariadb指令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install mariadb-server mariadb</span><br></pre></td></tr></table></figure></p>
 <p>对于mariadb的启用与停止，使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start/stop/restart mariadb</span><br></pre></td></tr></table></figure></p>
 <p>来进行操作<br>如果发生了什么错误，请在<code>/var/log/mariadb/mariadb.log</code>查看日志</p>
 <h2 id="远程获取数据"><a href="#远程获取数据" class="headerlink" title="远程获取数据"></a>远程获取数据</h2><p><em>使用mysqldump</em></p>
