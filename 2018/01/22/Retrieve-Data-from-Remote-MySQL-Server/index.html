@@ -10,10 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="安装mysql&amp;amp;mariadbMac下安装homebrew安装首先执行：1brew search mysql
-来搜索电脑上的mysql，如果已安装，直接使用即可如果要更换版本应使用:1brew upgrade MySQL
-如果未安装，可以通过：1brew install mysql
-or1b">
+        <meta name="description" content="Fen is here.">
     
 
     <!--Author-->
@@ -27,6 +24,8 @@ or1b">
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Fen is here." />
     
 
     <!--Open Graph Site Name-->
@@ -185,7 +184,7 @@ or1b">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fjimmy30312%2Fao-no-exorcist-blue-exorcist-4&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
 <h2 id="安装mysql-amp-mariadb"><a href="#安装mysql-amp-mariadb" class="headerlink" title="安装mysql&amp;mariadb"></a>安装mysql&amp;mariadb</h2><h3 id="Mac下安装"><a href="#Mac下安装" class="headerlink" title="Mac下安装"></a>Mac下安装</h3><h4 id="homebrew安装"><a href="#homebrew安装" class="headerlink" title="homebrew安装"></a>homebrew安装</h4><p>首先执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew search mysql</span><br></pre></td></tr></table></figure></p>
-<p>来搜索电脑上的mysql，如果已安装，直接使用即可<br>如果要更换版本应使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade MySQL</span><br></pre></td></tr></table></figure></p>
+<p>来搜索电脑上的mysql，如果已安装，直接使用即可<br>如果要更换版本应使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade MySQL</span><br></pre></td></tr></table></figure></p>
 <p>如果未安装，可以通过：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure></p>
 <p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql@major.minor</span><br></pre></td></tr></table></figure></p>
 <p>来安装<br><code>major</code>代表大版本，<code>minor</code>代表小版本，例如安装mysql5.6指令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql@5.6</span><br></pre></td></tr></table></figure></p>
@@ -209,7 +208,7 @@ or1b">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -proot -hhost database_name table_name &gt; /path/to/target/file/file_name.sql</span><br></pre></td></tr></table></figure>
 <p><code>--where=&quot;1 other_commands&quot;</code>附加搜索条件，开头的数值<code>1</code>表示<code>select *</code><br><code>--no_data</code>表示指提取数据库表结构<br><code>--no-create-info</code>指提取数据<br><code>--fields-terminated-by=, --fields-enclosed-by=&#39;&quot;&#39;</code>用于输出csv格式，属性分隔符<code>,</code>，以<code>&quot;</code>括起</p>
 <p>大部分情况可以使用，如果遇到错误，先排查是否属于权限不足（包括用户权限，目标路径的权限）</p>
-<p>导出成<code>.csv</code>格式也可以使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -A database_name -hhost -uroot -proot -ss -e &quot;SELECT * from table_name;&quot; | sed &apos;s/\t/&quot;,&quot;/g;s/^/&quot;/;s/$/&quot;/;s/\n//g&apos; &gt; /path/to/target/file/file_name.csv</span><br></pre></td></tr></table></figure></p>
+<p>导出成<code>.csv</code>格式也可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -A database_name -hhost -uroot -proot -ss -e &quot;SELECT * from table_name;&quot; | sed &apos;s/\t/&quot;,&quot;/g;s/^/&quot;/;s/$/&quot;/;s/\n//g&apos; &gt; /path/to/target/file/file_name.csv</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>csv只是一种文本规范，本质上还是纯文本格式</p>
 </blockquote>
