@@ -210,6 +210,8 @@
 <p>如果之前进行standby master初始化失败，要先删除目标host上master数据目录下的内容，否则会导致失败<br>失败日志会保存在standby master的/tmp目录下</p>
 </blockquote>
 <p>详细查看<code>gpinitstandby</code><a href="http://gpdb.docs.pivotal.io/530/utility_guide/admin_utilities/gpinitstandby.html" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="授权远程连接"><a href="#授权远程连接" class="headerlink" title="授权远程连接"></a>授权远程连接</h2><p>在<code>$MASTER_DATA_DIRECTORY/pg_hba.conf</code>文件末尾，添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host    all     all     0.0.0.0/0       md5</span><br></pre></td></tr></table></figure></p>
+<p>表示开放所有数据库，所有端口给所有用户<br>可以指定ip及用户</p>
 <h2 id="提示Out-of-Sync"><a href="#提示Out-of-Sync" class="headerlink" title="提示Out of Sync"></a>提示Out of Sync</h2><p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search rsync</span><br></pre></td></tr></table></figure></p>
 <p>搜索rsync<br>安装<code>rsync</code>，<code>librsync</code>以及<code>librsync-devel</code></p>
 <p><a href="https://shilin.deviantart.com/art/AU-cover-685315216" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/82b0/f/2017/159/3/7/au_cover_by_shilin-dbc0ols.png" alt="AU cover"></a></p>
