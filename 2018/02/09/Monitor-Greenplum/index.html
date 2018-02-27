@@ -217,9 +217,7 @@
 <p>以<code>gpadmin</code>用户，执行<code>gpccinstall</code>在要安装的服务器上安装GPCC：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpccinstall -f /path/to/hostfile</span><br></pre></td></tr></table></figure></p>
 <h4 id="设置GPCC环境"><a href="#设置GPCC环境" class="headerlink" title="设置GPCC环境"></a>设置GPCC环境</h4><p>将<code>GPPERFMONHOME</code>变量添加到shell环境中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPPERFMONHOME=/usr/local/greenplum-cc-web</span><br><span class="line">source $GPPERFMONHOME/gpcc_path.sh</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<blockquote>
 <p>同样的，保证<code>~/.bashrc</code>文件中包含<code>MASTER_DATA_DIRECTORY</code>变量和<code>greenplum_path.sh</code>的访问入口</p>
-</blockquote>
 </blockquote>
 <p>然后保存并<code>source</code>shell环境文件</p>
 <h2 id="创建GPCC数据库gpperfmon"><a href="#创建GPCC数据库gpperfmon" class="headerlink" title="创建GPCC数据库gpperfmon"></a>创建GPCC数据库gpperfmon</h2><p>当数据收集代理启用时，他们随着GP数据库服务的进程而启动或关闭（通过<code>gpstart</code>和<code>gpstop</code>指令）。</p>
@@ -253,16 +251,43 @@
 </li>
 </ol>
 <p>用户也可以通过使用<code>psql gpperfmon</code>命令，连接到<code>gpperfmon</code>数据库来查看信息。</p>
-<h2 id="gpmon用户授权"><a href="#gpmon用户授权" class="headerlink" title="gpmon用户授权"></a>gpmon用户授权</h2><p>The gperfmon_install utility adds the gpmon user to the pg_hba.conf authorization configuration file entries allowing local connections to any database in the Greenplum cluster. Greenplum Command Center requires that the gpmon user have access to gpperfmon and every database that Command Center will monitor. Since the gpmon role is a Greenplum Database superuser, you may wish to restrict the role from accessing other databases. Edit the $MASTER_DATA_DIRECTORY/pg_hba.conf and edit these lines:<br><code>gperfmon_install</code>指令会将<code>gpmon</code>用户添加到<code>pg_hba.conf</code>授权配置文件中，并允许从本地连接到GP集群上的所有数据库。GPCC要求<code>gpmon</code>用户拥有<code>gpperfmon</code>以及所有需要监视的数据库的访问权限。<code>gpmon</code>作为GP数据库的超级用户，我们也可以限制其访问其他的数据库。通过编辑<code>$MASTER_DATA_DIRECTORY/pg_hba.conf</code>来限制其权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local    gpperfmon   gpmon         md5</span><br><span class="line">host     all         gpmon         127.0.0.1/28    md5</span><br><span class="line">host     all         gpmon         ::1/128         md5</span><br></pre></td></tr></table></figure></p>
+<h2 id="gpmon用户授权"><a href="#gpmon用户授权" class="headerlink" title="gpmon用户授权"></a>gpmon用户授权</h2><p><code>gperfmon_install</code>指令会将<code>gpmon</code>用户添加到<code>pg_hba.conf</code>授权配置文件中，并允许从本地连接到GP集群上的所有数据库。GPCC要求<code>gpmon</code>用户拥有<code>gpperfmon</code>以及所有需要监视的数据库的访问权限。<code>gpmon</code>作为GP数据库的超级用户，我们也可以限制其访问其他的数据库。通过编辑<code>$MASTER_DATA_DIRECTORY/pg_hba.conf</code>来限制其权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local    gpperfmon   gpmon         md5</span><br><span class="line">host     all         gpmon         127.0.0.1/28    md5</span><br><span class="line">host     all         gpmon         ::1/128         md5</span><br></pre></td></tr></table></figure></p>
 <p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local    gpperfmon,userdb1,userdb2   gpmon                         md5</span><br><span class="line">host     gpperfmon,userdb1,userdb2   gpmon         127.0.0.1/28    md5</span><br><span class="line">host     gpperfmon,userdb1,userdb2   gpmon         ::1/128         md5</span><br></pre></td></tr></table></figure></p>
 <p>这样，<code>gpmon</code>用户就只能访问<code>gpperfmon</code>，<code>userdb1</code>和<code>userdb2</code>三个数据库。</p>
-<h2 id="创建GPCC控制台实例"><a href="#创建GPCC控制台实例" class="headerlink" title="创建GPCC控制台实例"></a>创建GPCC控制台实例</h2><p>A Command Center Console instance is a web server providing an HTML5 graphical console application to monitor system metrics and perform some administrative tasks for a single Greenplum Database cluster.</p>
-<p>The Command Center Console runs on the gpmonws web server. The default web server port is 28080. Configuration files, log files, and runtime files for each Command Center instance are managed in a subdirectory of the $GPPERFMONHOME/instances directory.</p>
-<p>If you have multiple Greenplum Database instances, you can create separate Command Center Console instances for each of them. Each separate console instance operates on a unique port and has its own unique configuration options. A multi-cluster view may be enabled to allow you to view status for all clusters. See Enabling Multi-Cluster Support for more information.</p>
-<p>GPCC控制台实例是一个能提供HTML5图形化控制台应用的网页服务器，用于监控系统状态，为某个GP数据库集群执行某些管理任务。</p>
+<h2 id="创建GPCC控制台实例"><a href="#创建GPCC控制台实例" class="headerlink" title="创建GPCC控制台实例"></a>创建GPCC控制台实例</h2><p>GPCC控制台实例是一个能提供HTML5图形化控制台应用的网页服务器，用于监控系统状态，为某个GP数据库集群执行某些管理任务。</p>
 <p>GPCC控制台在<code>gpmonws</code>网页服务器上运行。默认的服务器端口为<code>28080</code>。每个GPCC实例的配置文件，日志文件，运行时文件都在<code>$GPPERFMONHOME/instances</code>目录中进行管理。</p>
-<p><a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/setup-instance.html" target="_blank" rel="noopener">Official Documentation</a></p>
-<p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
+<p>可以为不同的GP数据库实例分别创建GPCC控制台实例。每个控制台实例通过不同的端口操控，并且使用单独的配置选项。查看<a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/setup-multi-cluster.html" target="_blank" rel="noopener">多集群支持</a>。</p>
+<h3 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h3><ul>
+<li>确认GPCC已经安装</li>
+<li><code>gpperfmon</code>数据库已经被创建，并且数据收集代理正常运行。</li>
+<li><p><code>gpmon</code>用户已经创建，并且能正常登陆到<code>gpperfmon</code>数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U gpmon gpperfmon</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所有需要用来加密、认证的证书、Kerberos密匙文件已经安装。查看<a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/security-gpcc.html" target="_blank" rel="noopener">Securing a Greenplum Command Center Console Instance</a>。</p>
+</li>
+</ul>
+<p><code>gpcmdr --setup</code>指令可以y用来建立GPCC实例。该命令可以交互式地运行，也可以通过创建一个配置文件非交互式地运行。如果使用了配置文件，那么就可以一次创建多个GPCC实例。</p>
+<h3 id="交互式创建"><a href="#交互式创建" class="headerlink" title="交互式创建"></a>交互式创建</h3><p>按以下步骤将创建一个心得GPCC控制台实例。</p>
+<ol>
+<li>以<code>gpadmin</code>用户登陆</li>
+<li>执行<code>gpcmdr --setup</code>命令（GP数据库需要处于运行状态）。</li>
+<li>首先将提示输入实例名称，可以包含字母，数字以及下划线。然后会提示输入显示的名称，直接按会车则默认使用实例名称。</li>
+<li>设置会询问master是否是远程服务器。如果选择<code>y</code>，则按照提示输入master主机名（如果要使用GPCC负载管理则不能用IP地址）以及端口号。</li>
+<li>设置将询问是否启用Kerberos验证。如果选择否，可以之后使用<code>gpcmdr --krbenable</code>指令来启动Kerberos验证。详细请查看<a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/kerberos.html" target="_blank" rel="noopener"> Enabling Kerberos Authentication with Greenplum Command Center</a>。</li>
+<li>设置将询问是否为GPCC控制台启用SSL连接。启用SSL将同时启用WebSockets。由于数据库登陆信息会通过网络传输，建议启用SSL来加密GPCC通信。输入<code>y</code>之后，设置将要求指定<code>X509</code>证书文件的 <em>完整路径</em>。证书文件必须可以被运行GPCC网页服务的用户访问和读取。输入的路径将被添加到GPCC实例的<code>app.conf</code>文件中。</li>
+<li>设置将询问是否将配置拷贝到standby master上。不支持远程安装。选择是，用户将被要求提供standby master的主机名。设置GPCC实例网页服务的端口。不同的实例必须使用不同的端口号。默认端口号为28080。</li>
+<li>设置将询问是否为Web API启用SSL。其将确保GPCC REST API上的请求和应答都被加密。如果选择<code>y</code>，用户需要输入证书文件的完整路径。</li>
+</ol>
+<p>设置将在<code>$GPPERFMONHOME/instances</code>路径下按实例名称创建一个实例。</p>
+<p>通过指令<code>gpcmdr --start instance_name</code>启动GPCC控制台实例。</p>
+<h3 id="非交互式创建"><a href="#非交互式创建" class="headerlink" title="非交互式创建"></a>非交互式创建</h3><p>首先要创建一个配置文件以供<code>gpcmdr --setup</code>读取。</p>
+<p>配置文件可能包含多个section，在<code>[DEFAULT]</code>section的参数将被应用到所有子section，同时它们也可以被覆盖。</p>
+<p>除了<code>[DEFAULT]</code>之外的所有section都将定义一个要被创建的GPCC实例。</p>
+<p>所有的参数以键值对表示，以等号(=)或冒号(:)分隔。以井号(#)或分号(;)开始的命令将被跳过。</p>
+<p>以下是一个范例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[DEFAULT]</span><br><span class="line"># defaults apply to all instances</span><br><span class="line">remote_db: false</span><br><span class="line">enable_copy_standby: true</span><br><span class="line">standby_master_host: smdw</span><br><span class="line">enable_kerberos: false</span><br><span class="line">enable_ssl: true</span><br><span class="line">ssl_cert_file: /etc/ssl/certs/cert.pem</span><br><span class="line"></span><br><span class="line">[production]</span><br><span class="line">master_hostname: mdw</span><br><span class="line">instance_name: prod</span><br><span class="line">display_name: Production</span><br><span class="line">master_port: 5432</span><br><span class="line">web_port: 28080</span><br><span class="line"></span><br><span class="line">[development]</span><br><span class="line">master_hostname: mdw</span><br><span class="line">instance_name: dev</span><br><span class="line">enable_copy_standby: false ; override</span><br><span class="line">display_name: Development</span><br><span class="line">master_port: 5532</span><br><span class="line">web_port: 28090</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动GPCC控制台实例"><a href="#启动GPCC控制台实例" class="headerlink" title="启动GPCC控制台实例"></a>启动GPCC控制台实例</h2><p>通过<code>gpcmdr --start instance_name</code>命令，启动GPCC控制台。</p>
+<p>如果未指定GPCC控制台实例的名字，所有的控制台实例都将启动。</p>
+<p><a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/setup-instance.html" target="_blank" rel="noopener">官方文档</a></p>
 <p><a href="https://larienne.deviantart.com/art/Little-Mermaid-The-Land-and-The-Sea-593834450" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/381a/f/2016/060/9/5/_little_mermaid___the_land_and_the_sea__by_larienne-d9tjxle.png" alt="+Little Mermaid - The Land and The Sea+"></a></p>
 <p>..-. . -.</p>
 
