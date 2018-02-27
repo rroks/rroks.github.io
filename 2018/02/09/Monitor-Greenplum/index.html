@@ -183,6 +183,85 @@
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnymano%2Fquand-la-pluie-tombe%3Fin%3Dreallyrichie%2Fsets%2Facid-jazz&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>GP指挥中心(Greenplum Command Center, GPCC)，能够在GP环境下，监视系统表现，分析系统健康，允许管理员执行一定的管理任务<br>GP指挥中心控制台是一个可视化的交互式网页应用，其通常安装在web服务器上（通常是master）<br>GPCC由运行在master和segment主机上的代理组成<br>GPCC收集数据库查询信息和系统使用状况，并周期性地将信息存储到一个GP数据库中（指挥中心数据库，名为gpperform）<br>GPCC结构如下<img src="http://gpcc.docs.pivotal.io/330/gpcc/graphics/gpcc-arch.png" alt="GPCC-architecture"></p>
+<p>用户可以通过客户端程序，例如<code>psql</code>连接到GPCC数据库，也可以通过应用程序接口，比如JDBC和ODBC连接。管理员也可以通过GPCC控制台查看当前和历史记录，执行其他管理任务。<br>GPCC数据库由三组表构成：<code>now</code>, <code>history</code>, <code>tail。</code><br><code>now</code>表保存当前的系统任务，比如激活的查询，<code>history</code>表保存过去的系统任务，<code>tail</code>表用于数据转移<br><code>tail</code>表只用于内部查询，不能被外部用户查询<br><code>now</code>和<code>tail</code>表都以文本形式存放在master。GPCC数据库只能通过外部表访问他们<br><code>history</code>表是常规的数据表，存于GPCC数据库中</p>
+<p>GPCC提供可视化的HTML5控制台用于查看GP数据库系统的使用状况以及执行一定的管理任务</p>
+<h4 id="GPCCk控制台功能"><a href="#GPCCk控制台功能" class="headerlink" title="GPCCk控制台功能"></a>GPCCk控制台功能</h4><ul>
+<li>实时系统状态查看</li>
+<li>集群实时的统计信息</li>
+<li><code>Query Monitor</code>可以查看所有正在执行和等待执行的查询</li>
+<li>四个不同的权限等级，允许用户查看或取消自己的或他人的查询，以及查看或管理管理员信息</li>
+<li><code>Cluster Metrics</code>视图同步显示系统历史状态</li>
+<li><code>History</code>视图列出已完成的查询，以及指定时间段内的系统状态</li>
+<li><code>Segment Status</code>查看segment的概览和详细信息</li>
+<li><code>Storage Status</code>查看segment的数据存储状况</li>
+<li><code>Admin &gt; Permissions</code>可以查看以及管理权限等级</li>
+<li><code>Admin &gt; Authentication</code>可以查看、编辑<code>pg_hba.con</code>权限配置文件</li>
+</ul>
+<p>如果由多个GP环境，可以分别为其创建GPCC实例。每个控制台实例分别使用不同的端口，并且有不同的配置选项。详细查看<a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/setup-instance.html#topic_hpc_p4z_xp" target="_blank" rel="noopener">Creating Greenplum Command Center Console Instances</a></p>
+<h2 id="安装GPCC"><a href="#安装GPCC" class="headerlink" title="安装GPCC"></a>安装GPCC</h2><p>通常GPCC安装子GP数据库的masterz主机上。通常这样做能获得最好的表现和安全性，尤其是GPCC控制台的请求不通过网络传输的时候。</p>
+<p>如果要在远程系统上安装GPCC控制台（即不与GP数据库在同一个集群系统中），远程系统上必须要先安装GP数据库。远程系统的数据库不必初始化。</p>
+<h3 id="安装运行GPCC"><a href="#安装运行GPCC" class="headerlink" title="安装运行GPCC"></a>安装运行GPCC</h3><p><em>重要：</em> <code>gpadmin</code>用户拥有并使用默认安装在<code>/usr/local</code>目录下的GPCC软件。安装前，确保确保<code>gpadmin</code>用户具有目标安装目录的写入权限。standby master也要具有同样的权限。或者也可以以root用户执行安装，在安装结束后更改安装目录及其内容的所有者为<code>gpadmin</code>用户。</p>
+<p>首先要从<a href="http://network.pivotal.io/" target="_blank" rel="noopener">Pivotal</a>下载所需的安装器。解压后执行<code>.bin</code>文件来执行安装。按照提示进行配置。默认的安装目录为<code>/usr/local/greenplum-cc-web-X.X.X</code>，用户必须有在<code>/usr/local</code>下的写入权限。也可以通过写入绝对路径来选择不同的安装目录。如果有standby master可以选择同时在standby master上安装GPCC。</p>
+<p>如果以任何其他用户安装GPCC，请在安装后修改所有者以及访问权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown -R gpadmin:gpadmin greenplum-cc-web-X.X.X</span><br><span class="line">chmod -R 755 greenplum-cc-web-X.X.X</span><br></pre></td></tr></table></figure></p>
+<h3 id="在其他主机上安装GPCC"><a href="#在其他主机上安装GPCC" class="headerlink" title="在其他主机上安装GPCC"></a>在其他主机上安装GPCC</h3><ul>
+<li>确保目标主机能够免密登陆GP集群（查看<code>gpssh-exkeys</code>了解免密登陆方法）</li>
+<li>目标主机的<code>gpadmin</code>用户具有目标安装目录的写入权限。默认路径为<code>/usr/local</code>。如果以其他用户安装，在安装完成后要修改相应的所有者以及访问权限。</li>
+<li><p><code>~gpadmin/.pgpass</code>要被拷贝到目标主机。并且目标主机的<code>gpadmin</code>用户具有读写权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~gpadmin/.pgpass</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GP数据库授权文件<code>$MASTER_DATA_DIRECTORY/pg_hba.conf</code>必须包含被授权允许访问GPCC的用户的信息。</p>
+</li>
+</ul>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>Create a text file containing the names of the standby master host or other hosts where the software is to be installed, one name per line. Do not include the name of the host where you ran the installer. Hostnames must be resolvable in DNS. For example:<br>创建包含其他要安装GPCC的主机别名的文件，每行一个，不可以有空格。不要包含运行安装器的主机。主机别名要可以被DNS解析，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">smdw</span><br><span class="line">gpcc</span><br></pre></td></tr></table></figure></p>
+<p>以<code>gpadmin</code>用户，执行<code>gpccinstall</code>在要安装的服务器上安装GPCC：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpccinstall -f /path/to/hostfile</span><br></pre></td></tr></table></figure></p>
+<h4 id="设置GPCC环境"><a href="#设置GPCC环境" class="headerlink" title="设置GPCC环境"></a>设置GPCC环境</h4><p>将<code>GPPERFMONHOME</code>变量添加到shell环境中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPPERFMONHOME=/usr/local/greenplum-cc-web</span><br><span class="line">source $GPPERFMONHOME/gpcc_path.sh</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<p>同样的，保证<code>~/.bashrc</code>文件中包含<code>MASTER_DATA_DIRECTORY</code>变量和<code>greenplum_path.sh</code>的访问入口</p>
+</blockquote>
+</blockquote>
+<p>然后保存并<code>source</code>shell环境文件</p>
+<h2 id="创建GPCC数据库gpperfmon"><a href="#创建GPCC数据库gpperfmon" class="headerlink" title="创建GPCC数据库gpperfmon"></a>创建GPCC数据库gpperfmon</h2><p>当数据收集代理启用时，他们随着GP数据库服务的进程而启动或关闭（通过<code>gpstart</code>和<code>gpstop</code>指令）。</p>
+<p>GP提供了<code>gpperfmon_install</code>来执行下列任务：</p>
+<ul>
+<li>创建指挥中心数据库<code>gpperfmon</code></li>
+<li>创建指挥中心超级用户<code>gpmon</code></li>
+<li>配置GP数据库服务以允许来自<code>gpmon</code>的连接（通过编辑<code>pg_hba.conf</code>和<code>.pgpass</code>文件。）</li>
+<li>在GP数据库服务的<code>postgresql.conf</code>文件中设置指挥中心服务器配置参数。</li>
+</ul>
+<p><code>gpperfmon_install</code>和代理是GP数据库软件的一部分。本节的操作可以在GPCC安装之前或安装之后执行。</p>
+<h4 id="启用收集代理"><a href="#启用收集代理" class="headerlink" title="启用收集代理"></a>启用收集代理</h4><ol>
+<li><p>首先登陆到<code>gpadmin</code>用户</p>
+</li>
+<li><p>执行<code>gpperfmon_install</code>，附带<code>--enable</code>选项。要提供GP数据库master端口，以及要创建的<code>gpmon</code>超级用户的密码。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpperfmon_install --enable --password changeme --port 5432</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>设置的<code>gpmon</code>密码将被保存在<code>gpadmin</code>用户根目录下的<code>.pgpass</code>文件中。</p>
+<ol>
+<li>执行完<code>gpperfmon_install</code>后，重启GP数据库服务：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpstop -r</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>数据收集代理在重启之后才会启动。</p>
+<ol>
+<li><p>使用<code>ps</code>命令查看数据收集进程是否已经在master上运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep gpmmon</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行以下命令来验证<code>gpmon</code>用户可以被认证，并且数据收集进程能够写入GPCC数据库。如果所有的segment数据收集代理都在运行，将能看见所有的segment主机被一行一行列出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U gpmon gpperfmon -c &apos;SELECT * FROM system_now;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>用户也可以通过使用<code>psql gpperfmon</code>命令，连接到<code>gpperfmon</code>数据库来查看信息。</p>
+<h2 id="gpmon用户授权"><a href="#gpmon用户授权" class="headerlink" title="gpmon用户授权"></a>gpmon用户授权</h2><p>The gperfmon_install utility adds the gpmon user to the pg_hba.conf authorization configuration file entries allowing local connections to any database in the Greenplum cluster. Greenplum Command Center requires that the gpmon user have access to gpperfmon and every database that Command Center will monitor. Since the gpmon role is a Greenplum Database superuser, you may wish to restrict the role from accessing other databases. Edit the $MASTER_DATA_DIRECTORY/pg_hba.conf and edit these lines:<br><code>gperfmon_install</code>指令会将<code>gpmon</code>用户添加到<code>pg_hba.conf</code>授权配置文件中，并允许从本地连接到GP集群上的所有数据库。GPCC要求<code>gpmon</code>用户拥有<code>gpperfmon</code>以及所有需要监视的数据库的访问权限。<code>gpmon</code>作为GP数据库的超级用户，我们也可以限制其访问其他的数据库。通过编辑<code>$MASTER_DATA_DIRECTORY/pg_hba.conf</code>来限制其权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local    gpperfmon   gpmon         md5</span><br><span class="line">host     all         gpmon         127.0.0.1/28    md5</span><br><span class="line">host     all         gpmon         ::1/128         md5</span><br></pre></td></tr></table></figure></p>
+<p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local    gpperfmon,userdb1,userdb2   gpmon                         md5</span><br><span class="line">host     gpperfmon,userdb1,userdb2   gpmon         127.0.0.1/28    md5</span><br><span class="line">host     gpperfmon,userdb1,userdb2   gpmon         ::1/128         md5</span><br></pre></td></tr></table></figure></p>
+<p>这样，<code>gpmon</code>用户就只能访问<code>gpperfmon</code>，<code>userdb1</code>和<code>userdb2</code>三个数据库。</p>
+<h2 id="创建GPCC控制台实例"><a href="#创建GPCC控制台实例" class="headerlink" title="创建GPCC控制台实例"></a>创建GPCC控制台实例</h2><p>A Command Center Console instance is a web server providing an HTML5 graphical console application to monitor system metrics and perform some administrative tasks for a single Greenplum Database cluster.</p>
+<p>The Command Center Console runs on the gpmonws web server. The default web server port is 28080. Configuration files, log files, and runtime files for each Command Center instance are managed in a subdirectory of the $GPPERFMONHOME/instances directory.</p>
+<p>If you have multiple Greenplum Database instances, you can create separate Command Center Console instances for each of them. Each separate console instance operates on a unique port and has its own unique configuration options. A multi-cluster view may be enabled to allow you to view status for all clusters. See Enabling Multi-Cluster Support for more information.</p>
+<p>GPCC控制台实例是一个能提供HTML5图形化控制台应用的网页服务器，用于监控系统状态，为某个GP数据库集群执行某些管理任务。</p>
+<p>GPCC控制台在<code>gpmonws</code>网页服务器上运行。默认的服务器端口为<code>28080</code>。每个GPCC实例的配置文件，日志文件，运行时文件都在<code>$GPPERFMONHOME/instances</code>目录中进行管理。</p>
+<p><a href="http://gpcc.docs.pivotal.io/330/gpcc/topics/setup-instance.html" target="_blank" rel="noopener">Official Documentation</a></p>
 <p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
 <p><a href="https://larienne.deviantart.com/art/Little-Mermaid-The-Land-and-The-Sea-593834450" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/381a/f/2016/060/9/5/_little_mermaid___the_land_and_the_sea__by_larienne-d9tjxle.png" alt="+Little Mermaid - The Land and The Sea+"></a></p>
 <p>..-. . -.</p>
