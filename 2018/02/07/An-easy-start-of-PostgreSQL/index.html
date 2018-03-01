@@ -183,7 +183,47 @@
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fuser-662151601%2Fglory-dayshiroya-ozaki&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
-<p>暂时没想好怎么填坑，不要在意<br>无限期推迟～～～<br>事儿太多不知道怎么写了</p>
+<h2 id="What-is-PostgreSQL"><a href="#What-is-PostgreSQL" class="headerlink" title="What is PostgreSQL"></a>What is PostgreSQL</h2><p>PostgreSQL是一个对象-关系型数据库管理系统（object-relational database management system，ORDBMS）。</p>
+<p>PostgreSQL具有以下特性：</p>
+<ol>
+<li>Complex query</li>
+<li>Foreign keys</li>
+<li>Triggers</li>
+<li>Views</li>
+<li>Transactional integrity</li>
+<li>Multiversion concurrency control</li>
+</ol>
+<p>用户可以依据自己的需求扩展PostgreSQL：</p>
+<ol>
+<li>Data types</li>
+<li>Operators</li>
+<li>Aggregate functions</li>
+<li>Functions</li>
+<li>Index method</li>
+<li>Procedural Laguage</li>
+</ol>
+<h2 id="PostgreSQL-Architecture"><a href="#PostgreSQL-Architecture" class="headerlink" title="PostgreSQL Architecture"></a>PostgreSQL Architecture</h2><p>一个PostgreSQL会话包括了两个协同进程：</p>
+<ul>
+<li>服务端进程，其管理数据库文件，接收来自客户端的数据库连接请求，执行来自客户端的操作。数据库服务端进程名为postgres。</li>
+<li>客户端（前端）应用。客户端应用有很多种形式：面向文本工具，图形化应用，网页服务器（连接到服务器并将数据展示在网页上），或者定制的数据库维护工具。一些客户端应用提供了PostgreSQL。</li>
+</ul>
+<p>一个client/server应用的客户端和服务端可以在不同的主机上，通过TCP/IP网络连接。</p>
+<h5 id="You-should-keep-this-in-mind-because-the-files-that-can-be-accessed-on-a-client-machine-might-not-be-accessible-or-might-only-be-accessible-using-a-different-file-name-on-the-database-server-machine"><a href="#You-should-keep-this-in-mind-because-the-files-that-can-be-accessed-on-a-client-machine-might-not-be-accessible-or-might-only-be-accessible-using-a-different-file-name-on-the-database-server-machine" class="headerlink" title="You should keep this in mind, because the files that can be accessed on a client machine might not be accessible (or might only be accessible using a different file name) on the database server machine."></a>You should keep this in mind, because the files that can be accessed on a client machine might not be accessible (or might only be accessible using a different file name) on the database server machine.</h5><p>PostgreSQL服务端支持来自客户端的多并发连接请求。它会为每个连接启动一个新的进程（称为”folk”）。在这种情况下，客户端和新进程将直接通信，而不是通过原来的postgres进程。因此，master服务进程将一直处于运行，等待客户端连接。</p>
+<h2 id="PostgreSQL-Commands"><a href="#PostgreSQL-Commands" class="headerlink" title="PostgreSQL Commands"></a>PostgreSQL Commands</h2><p>创建数据库：<br><code>createdb dbname</code></p>
+<h5 id="如果显示无法连接到数据库，原因可能是数据库服务没有启动。"><a href="#如果显示无法连接到数据库，原因可能是数据库服务没有启动。" class="headerlink" title="如果显示无法连接到数据库，原因可能是数据库服务没有启动。"></a>如果显示无法连接到数据库，原因可能是数据库服务没有启动。</h5><p>删除数据库：<br><code>dropdb dbname</code></p>
+<p>主要通过三种方式连接到数据库：</p>
+<ol>
+<li>通过命令行指令<code>psql</code>进行连接；也可以直接进行一些数据库操作。</li>
+<li>通过一个图形化程序来连接数据库，例如<code>pgAdmian</code></li>
+<li>通过程序接口</li>
+</ol>
+<p>可以通过<code>psql --help</code>查看使用方法。</p>
+<p>连接到数据库后，可以通过<code>\h</code>查看一些指令。</p>
+<p>退出客户端：<code>\q</code><br>查看连接信息：<code>\l</code><br>连接到其他数据库：<code>\c dbname -username</code></p>
+<h2 id="Database-Access"><a href="#Database-Access" class="headerlink" title="Database Access"></a>Database Access</h2><p>授权文件名为<code>pg_hba.conf</code>。<br>在文件的最下方有访问权限记录，格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host   database   role   CIDR-address   authentication-method</span><br></pre></td></tr></table></figure></p>
+<p>开放权限给所有用户：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host  all   all   0.0.0.0/0   md5</span><br></pre></td></tr></table></figure></p>
+<p><code>md5</code>表示密码将会被加密。</p>
+<p>更改后，需要重启服务，配置才能生效。</p>
 <p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
 <p><a href="https://godzilla23.deviantart.com/art/EUREKA-172593713" target="_blank" rel="noopener"><img src="https://pre00.deviantart.net/3ff9/th/pre/i/2010/205/f/3/eureka__by_godzilla23.jpg" alt="Eureka"></a></p>
 <p>..-. . -.</p>
