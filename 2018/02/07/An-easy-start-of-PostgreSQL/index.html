@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="An Easy Start of PostgreSQL"/>
+        <meta property="og:title" content="An Easy Start of PostgreSQL on Greenplum"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>An Easy Start of PostgreSQL - FenC</title>
+    <title>An Easy Start of PostgreSQL on Greenplum - FenC</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -154,7 +154,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>An Easy Start of PostgreSQL</h1>
+                    <h1>An Easy Start of PostgreSQL on Greenplum</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
@@ -176,6 +176,20 @@
 
             <!-- Tags and categories -->
            
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/database-greenplum/">#database, greenplum</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
 
             <!-- Gallery -->
             
@@ -219,12 +233,42 @@
 </ol>
 <p>可以通过<code>psql --help</code>查看使用方法。</p>
 <p>连接到数据库后，可以通过<code>\h</code>查看一些指令。</p>
-<p>退出客户端：<code>\q</code><br>查看连接信息：<code>\l</code><br>连接到其他数据库：<code>\c dbname -username</code></p>
+<p>退出客户端：<code>\q</code><br>查看连接信息：<code>\l</code><br>连接到其他数据库：<code>\c dbname -username</code><br>查询表信息：<code>\d tablename</code><br>查看具体帮助信息：<code>\h command</code>（例如<code>\h create table</code>）</p>
 <h2 id="Database-Access"><a href="#Database-Access" class="headerlink" title="Database Access"></a>Database Access</h2><p>授权文件名为<code>pg_hba.conf</code>。<br>在文件的最下方有访问权限记录，格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host   database   role   CIDR-address   authentication-method</span><br></pre></td></tr></table></figure></p>
 <p>开放权限给所有用户：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host  all   all   0.0.0.0/0   md5</span><br></pre></td></tr></table></figure></p>
 <p><code>md5</code>表示密码将会被加密。</p>
 <p>更改后，需要重启服务，配置才能生效。</p>
-<p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
+<h2 id="The-SQL-language"><a href="#The-SQL-language" class="headerlink" title="The SQL language"></a>The SQL language</h2><h3 id="Creating-a-New-Table"><a href="#Creating-a-New-Table" class="headerlink" title="Creating a New Table"></a>Creating a New Table</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE weather (</span><br><span class="line">    city            varchar(80) NOT NULL  DEFAULT &apos;&apos;  COMMENT &apos;Primary Key&apos;,</span><br><span class="line">    temp_lo         int,    -- low temperature</span><br><span class="line">    temp_hi         int,    -- high temperature</span><br><span class="line">    prcp            real,   -- precipitation</span><br><span class="line">    date            date，</span><br><span class="line">    PRIMARY KEY (&apos;city&apos;),</span><br><span class="line">    KEY (&apos;temp_lo&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><code>psql</code>支持换行，一个语句在遇到分号时才会结束。<br><code>city</code>表示一个关系列的属性的实际名称。<br><code>varchar(80)</code>表示<code>city</code>的数据类型为<code>varchar</code>，长度为<code>80</code>个字符。<br><code>NOT NULL</code>表示该列的值不能为空。<code>DEFAULT</code>表示如果用户未输入该列的值，将时候预设默认值。这里的默认值是空字符串(empty而不是null)。<br><code>COMMENT</code>表示注释，将会作为列的显示名称。</p>
+<p>PostgreSQL支持标准SQL类型：int, smallint, real, double precision, char(N), varchar(N), date, time, timestamp,  interval。还有其他一些类型，以及自定义类型。</p>
+<p>删除数据库表的操作为：<br><code>DROP TABLE tablename</code></p>
+<p><em>在GREENPLUM中</em></p>
+<ul>
+<li>在Greenplum中建表需要指定分布健（distribution key）。</li>
+<li>如果需要按字段分区，可以通过<code>partition by</code>创建分区表。</li>
+<li>可以使用<code>like</code>创建与目标相同结构的表。功能与<code>CREATE TABLE tablename AS SELECT * FROM targettable LIMIT 0;</code>相似。</li>
+</ul>
+<p>Greenplum是一个分布式数据库，数据分布于每个segment上。它有两种分布策略：</p>
+<ol>
+<li>Hash分布。指定一个分布键，计算hash值，并通过hash值路由至目标segment。如果不通过<code>DISTRIBUTED BY</code>指定分布键，则将默认以主键或唯一键为分布键。可以指定多个分布键。</li>
+<li>随机分布，或称平均分布。数据随机分散在节点上，无论内容。但是在实际执行中，关联操作将导致数据充分不，导致性能较差。语句为<code>DISTRIBUTED RANDOMLY</code>。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE weather (</span><br><span class="line">    city            varchar(80) NOT NULL  DEFAULT &apos;&apos;  COMMENT &apos;Primary Key&apos;,</span><br><span class="line">    temp_lo         int,    -- low temperature</span><br><span class="line">    temp_hi         int,    -- high temperature</span><br><span class="line">    prcp            real,   -- precipitation</span><br><span class="line">    date            date，</span><br><span class="line">    PRIMARY KEY (&apos;city&apos;),</span><br><span class="line">    KEY (&apos;temp_lo&apos;)</span><br><span class="line">) DISTRIBUTED BY (city);</span><br></pre></td></tr></table></figure>
+<p>每一个segment都是一个单一的数据库，单个数据库可以保证数据的唯一性，但是在多个数据节点就无法保证数据的全剧唯一性。因此选择按唯一键分布，保证同值数据在同一个数据库上，以保证唯一性（存疑）。</p>
+<h3 id="Populating-Deleting-and-Updating-a-Table-With-Rows"><a href="#Populating-Deleting-and-Updating-a-Table-With-Rows" class="headerlink" title="Populating, Deleting and Updating a Table With Rows"></a>Populating, Deleting and Updating a Table With Rows</h3><p><em>插入语句的语法：</em><br><code>INSERT INTO tablename VALUES (&#39;value1&#39;, &#39;value2&#39;, 6);</code></p>
+<p>非简单数值类型（char，date等）必须要用<code>&#39;&#39;</code>括起来。输入值的顺序要和表的列顺序相同。如果要指定输入列，可以在表名后明确地列出属性名：<br><code>INSERT INTO tablename (column1, column2, column3) VALUES (&#39;value1&#39;, &#39;value2&#39;, 6);</code></p>
+<p>属性名顺序可以打乱，只要和后面的值对应即可。</p>
+<p>从外部文件导入大量数据可以尝试使用<code>COPY</code>指令：<br><code>COPY tablename FROM /path/to/file;</code></p>
+<p><em>更新数据语法：</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE tablename</span><br><span class="line">SET column1 = &apos;value1&apos;, column2 = value2</span><br><span class="line">WHERE column3 &gt; &apos;value3&apos;;</span><br></pre></td></tr></table></figure></p>
+<p><code>WHERE</code>关键字用于表示筛选条件，以<code>AND</code>包含多个条件。</p>
+<p><em>删除数据语法：</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM tablename WHERE column1 = value1;</span><br></pre></td></tr></table></figure></p>
+<p><code>DELETE FROM tablename;</code>不带参数时将删除整张表的数据。涉及整张表的删除应该使用<code>TRUNCATE</code>（删除物理文件）。<br><code>TRUNCATE</code>将删除整个表文件，然后重新创建数据文件。</p>
+<p><em>Greenplum</em><br>在GP中，插入数据时分布键不能为空，否则数据将被存储到每个segment。<br>更新数据不能涉及分布键，否则会导致数据重分布。<br>删除数据时也会导致重分布。</p>
+<h3 id="Querying-a-Table"><a href="#Querying-a-Table" class="headerlink" title="Querying a Table"></a>Querying a Table</h3><p>查询语句基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1 AS c1, column2 AS c2, (column3 + column4)/2 AS c3</span><br><span class="line">FROM tablename AS tb</span><br><span class="line">WHERE tb.column1 = value1 AND tb.column2 &gt; value2</span><br><span class="line">ORDER BY column3, tb.column4</span><br></pre></td></tr></table></figure></p>
+<p><code>AS</code>之后可以为目标（属性或表）添加一个临时的别名（投影）。<code>AS</code>可以省略。<br>别名可以减少输入操作，在涉及子查询等操作时，区分不同的查询结果。<br><code>ORDER BY</code>可以接收多个列。<br>在<code>SELECT</code>中还可以对不同属性数据进行运算操作如<code>(column3 + column4)/2</code>。</p>
+<p><em>Greenplum</em></p>
+<p>对于GP，重点是要了解分布式执行计划。<br>需要注意的是，Master上排列的顺序，是根据数据导入时的排列的。从segment读取数据时，顺序是随机的，不固定的。所以两次搜索的结果，顺序可能是不同的。<br><code>EXPLAIN</code>关键字可以用来查看<code>SELECT</code>语句的执行计划。</p>
+<h3 id="Joins-Between-Tables"><a href="#Joins-Between-Tables" class="headerlink" title="Joins Between Tables"></a>Joins Between Tables</h3><h3 id="Aggregate-Functions"><a href="#Aggregate-Functions" class="headerlink" title="Aggregate Functions"></a>Aggregate Functions</h3><p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
 <p><a href="https://godzilla23.deviantart.com/art/EUREKA-172593713" target="_blank" rel="noopener"><img src="https://pre00.deviantart.net/3ff9/th/pre/i/2010/205/f/3/eureka__by_godzilla23.jpg" alt="Eureka"></a></p>
 <p>..-. . -.</p>
 
