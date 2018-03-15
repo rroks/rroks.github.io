@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Fen is here.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Fen Chy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="General JDBC Usage"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Fen is here." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="FenC"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>General JDBC Usage - FenC</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">-.-. -.-.</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/rroks">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/0004.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>General JDBC Usage</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-03-07
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <script src="/assets/js/APlayer.min.js"> </script><p>JDBC是一个Java标准，为Java连接到相关数据库提供接口。JDBC标准通过java.sql接口设计、实现。独立开发者可以独自实现和扩展专属的JDBC驱动。JDBC基于X/OPEN SQL Call Level Interface(CLI)。JDBC4.0符合SQL 2003标准。</p>
+<h3 id="检查JDBC驱动版本"><a href="#检查JDBC驱动版本" class="headerlink" title="检查JDBC驱动版本"></a>检查JDBC驱动版本</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JDBCVersion</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class.forName(<span class="string">"com.pivotal.jdbc.GreenplumDriver"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Driver not found."</span>);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String args[])</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String URL = <span class="string">"jdbc:pivotal:greenplum://host:5432;DatabaseName=dbname"</span>;</span><br><span class="line">        String USER = <span class="string">"username"</span>;</span><br><span class="line">        String PWD = <span class="string">"passwd"</span>;</span><br><span class="line">        Connection conn = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            conn = DriverManager.getConnection(URL, USER, PWD);</span><br><span class="line">            DatabaseMetaData meta = conn.getMetaData();</span><br><span class="line">            System.out.println(<span class="string">"JDBC driver version is "</span> + meta.getDriverVersion());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Connection failed."</span>);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的数据库是Pivotal的Greenplum。不同数据库驱动的详细参数应该查看对应文档。主要区别在于驱动名和URL的内容。</p>
+<p><code>Class.forName(&quot;com.pivotal.jdbc.GreenplumDriver&quot;)</code>指定了所用的驱动。</p>
+<p><code>String URL = &quot;jdbc:pivotal:greenplum://host:5432;DatabaseName=dbname&quot;</code>指定了数据库的URL。<code>5432</code>是Greenplum和PostgreSQL的默认端口。对于其他数据库，格式会有所不同，具体应该参考相对应的文档。</p>
+<p><code>DriverManager.getConnection(URL, USER, PWD)</code>用来获取相应的数据库连接对象。</p>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><h4 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h4><p>Statement提供了三个主要的执行SQL语句的方法：<code>execute(), executeQuery(), executeUpdate()</code><br><code>executeQuery()</code>用于查询，方法返回查询内容。<br><code>executeUpdate()</code>用于更改操作，返回值为0、1，表示操作的结果。<br><code>execute()</code>可以执行所有类型SQL，返回值为0、1，表示操作结果。</p>
+<p>执行SQL查询语句：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"SQL query statement to execute"</span>;</span><br><span class="line">Connection connection = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  connection = DriverManager.getConnection(URL, USER, PWD);</span><br><span class="line">  Statement statement = connection.createStatement();</span><br><span class="line">  ResultSet rs = statement.executeQuery(sql);</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException) &#123;</span><br><span class="line">  System.out.println(<span class="string">"Connection failed."</span>);</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ResultSet rs</code>用来获取查询的结果。</p>
+<h4 id="PreparedStatement接口"><a href="#PreparedStatement接口" class="headerlink" title="PreparedStatement接口"></a>PreparedStatement接口</h4><p><code>PreparedStatement</code>接口是<code>Statement</code>的子接口，用于执行带有占位符的SQL语句。<code>PreparedStatement</code>语句的参数要被提供之后才能执行。</p>
+<p><code>PreparedStatement</code>提供了若干<code>setTypename(parameterIndex, value)</code>方法来设置参数。参数的顺序号要和其位置相同，值类型与Typename相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"SELECT a, b FROM table t WHERE t.a BETWEEN ? AND ? AND t.b = ?"</span>;<span class="comment">// a为Timestamp对象, b为String对象</span></span><br><span class="line">PreparedStatement pstmt = connection.prepareStatement(sql);</span><br><span class="line">pstmt.setTimestamp(<span class="number">1</span>, timestamp1);</span><br><span class="line">pstmt.setTimestamp(<span class="number">2</span>, timestamp2);</span><br><span class="line">pstmt.setString(<span class="number">3</span>, str);</span><br><span class="line">ResultSet rs = pstmt.executeQuery();</span><br></pre></td></tr></table></figure>
+<h4 id="ResultSet获取结果"><a href="#ResultSet获取结果" class="headerlink" title="ResultSet获取结果"></a>ResultSet获取结果</h4><p><code>ResultSet</code>提供了<code>getTypename(columnindex/columnlabel)</code>方法来获取相应的数据。列号列名选择其中一个即可。<br><code>ResultSet</code>获取的结果第一次执行<code>.next()</code>之后，将会指向第一个结果。<br>例如，对于前一小节的查询结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">  Timestamp ts = rs.getTimestamp(<span class="number">1</span> or <span class="string">"a"</span>);</span><br><span class="line">  String str = rs.getString(<span class="number">2</span> or <span class="string">"b"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="c3p0连接池"><a href="#c3p0连接池" class="headerlink" title="c3p0连接池"></a>c3p0连接池</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.mchange.v2.c3p0.*;</span><br><span class="line"></span><br><span class="line">ComboPooledDataSource connectionPool = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    connectionPool.setDriverClass(<span class="string">"com.pivotal.jdbc.GreenplumDriver"</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PropertyVetoException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">connectionPool.setJdbcUrl(URL);</span><br><span class="line">connectionPool.setUser(USER);</span><br><span class="line">connectionPool.setPassword(PWD);</span><br><span class="line">connectionPool.setMaxPoolSize(<span class="number">40</span>);    <span class="comment">// 连接池最大连接数</span></span><br><span class="line">connectionPool.setMinPoolSize(<span class="number">2</span>);     <span class="comment">// 连接池最小连接数</span></span><br><span class="line">connectionPool.setInitialPoolSize(<span class="number">5</span>); <span class="comment">// 连接池初始连接数</span></span><br><span class="line">connectionPool.setMaxStatements(<span class="number">200</span>); <span class="comment">// 最长statement长度</span></span><br></pre></td></tr></table></figure>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html" target="_blank" rel="noopener">Java JDBC Tutorial</a><br><a href="https://docs.oracle.com/javase/7/docs/api/java/sql/Connection.html" target="_blank" rel="noopener">Interface Connection</a><br><a href="https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html" target="_blank" rel="noopener">Interface Statement</a><br><a href="https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html" target="_blank" rel="noopener">Interface PreparedStatement</a><br><a href="https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html" target="_blank" rel="noopener">Interface ResultSet</a><br><a href="https://github.com/swaldman/c3p0/blob/master/src/java/com/mchange/v2/c3p0/ComboPooledDataSource.java" target="_blank" rel="noopener">swaldman/c3p0</a></p>
+<iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fchilledoutmusic%2Fmoana-how-far-ill-go-cover-by-jfla&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
+<p><a href="https://snatti89.deviantart.com/art/Farewell-727485345" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/a7dd/f/2018/025/f/9/farewell_by_snatti89-dc14ja9.png" alt="Farewell"></a></p>
+<p>..-. . -.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/rroks" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 Fen Chy<br></p>
+                <p class="copyright text-muted">
+                    <a target="_blank" href="http://www.gu6s.top/">闪电的6s</a>
+                    <a target="_blank" href="http://gzh.autyan.net/">6s掌控雷电</a>
+                    <a target="_blank" href="http://58.87.72.131:8080/w/hello">w</a>
+                    <a target="_blank" href="http://druid.pub/">常威说他缺911</a>
+                    <a target="_blank" href="http://www.yulaiz.com/">地王</a>
+                    <a target="_blank" href="http://ikoala.net/">考拉</a>
+                    <a target="_blank" href="http://baobaolei.cn/">大银蛇</a>
+                    <a target="_blank" href="http://baobaolei.cn/">bydmm</a>
+                    <a target="_blank" href="http://blog.autyan.com/">.net hentai</a>
+                    <br>
+                </p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
