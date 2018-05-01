@@ -8,6 +8,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--
+          My life for si,
+          though we can never go back.
+          Fen Ch
+    -->
+
+    <!-- @
+                                                       ▄              ▄
+                                                      ▌▒█           ▄▀▒▌
+            wow                                       ▌▒▒█        ▄▀▒▒▒▐
+                                                     ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+                                                   ▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+                such code                         ▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌
+                                                ▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌
+                                                ▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+                                               ▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌
+                                               ▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌
+                          very html           ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐
+                                              ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
+                                              ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐
+                much css                       ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌
+                                               ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐
+                                                ▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌
+                              so meta             ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+                                                     ▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+                                                      ░▒▒▒▒▒▒▒▒▒▒▀▀
+    -->
+
     <!--Description-->
     
         <meta name="description" content="Fen is here.">
@@ -185,7 +213,7 @@
                 <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fteamnightcore%2Fluis-fonsi-despacito-cover-jfla&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
 <h2 id="初始化Greenplum"><a href="#初始化Greenplum" class="headerlink" title="初始化Greenplum"></a>初始化Greenplum</h2><p>Greenplum系统是由多个PostgreSQL数据库组成的分布式数据库系统<br>Greenplum提供了自己的初始化方法<code>gpinitsystem</code>来初始化集群<br><code>gpinitsystem</code>需要提供所有segment主机的hostname<br>以<code>gpadmin</code>用户新建一个<code>hostfile_init</code>文件，包含所有的segment主机<br>（本文不涉及NIC绑定）</p>
 <p>接下来新建一个初始化配置文件<code>gpinitsystem_config</code><br>可以从<code>$GPHOME/docs/cli_help/gpconfigs/gpinitsystem_config</code>复制一份配置文件<br>自行修改相应内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ARRAY_NAME=&quot;EMC Greenplum DW&quot;</span><br><span class="line">SEG_PREFIX=gpseg</span><br><span class="line">PORT_BASE=40000</span><br><span class="line">declare -a DATA_DIRECTORY=(/data1/primary /data1/primary</span><br><span class="line">/data1/primary /data2/primary /data2/primary /data2/primary)</span><br><span class="line">MASTER_HOSTNAME=mdw</span><br><span class="line">MASTER_DIRECTORY=/data/master</span><br><span class="line">MASTER_PORT=5432</span><br><span class="line">TRUSTED_SHELL=ssh</span><br><span class="line">CHECK_POINT_SEGMENTS=8</span><br><span class="line">ENCODING=UNICODE</span><br></pre></td></tr></table></figure></p>
-<p>这些是segment配置<br><code>SEG_PREFIX</code>用于为master和segment实例命名的前缀，master的编号为<code>-1</code>，segment编号从0开始<br><code>PORT_BASE</code>是Greenplum系统segmentz主机所用的基准端口<br><code>DATA_DIRECTORY</code>指定segment数据的存放路径，路径数目决定了每个host的segment数量，可以存放于相同路径下<br><code>MASTER_HOSTNAME</code>是master的hostname<br><code>MASTER_DIRECTORY</code>为之前创建的master存储目录</p>
+<p>这些是segment配置<br><code>SEG_PREFIX</code>用于为master和segment实例命名的前缀，master的编号为<code>-1</code>，segment编号从0开始<br><code>PORT_BASE</code>是Greenplum系统segmentz主机所用的基准端口<br><code>DATA_DIRECTORY</code>指定segment数据的存放路径，路径数目决定了每个host的segment数量，可以存放于相同路径下<br><code>MASTER_HOSTNAME</code>是master的hostname<br><code>MASTER_DIRECTORY</code>为之前创建的master存储目录<br><code>ENCODING</code>应按照需要修改，比如<code>zh_CN.UTF-8</code></p>
 <p>如果要使用mirror，添加以下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MIRROR_PORT_BASE=50000</span><br><span class="line">REPLICATION_PORT_BASE=41000</span><br><span class="line">MIRROR_REPLICATION_PORT_BASE=51000</span><br><span class="line">declare -a MIRROR_DATA_DIRECTORY=(/data1/mirror /data1/mirror /data1/mirror /data2/mirror /data2/mirror /data2/mirror)</span><br></pre></td></tr></table></figure></p>
 <p><code>MIRROR_DATA_DIRECTORY</code>是mirror路径，同时决定了mirror数量，必须和segment数量一致</p>
 <p><strong>通过<code>gpinitsystem -S</code>初始化mirror使用的应是Spread Segment Mirroring方案<br>由于mirror数量必须和segment保持一致，在启用mirror时，必须确定所有segment主机的数量，大于每台segment主机上segment的数量<br>每台segment主机上的segmet数量由<code>DATA_DIRECTORY</code>中路径的数量决定<br>因此，如果主机数量不比segment多，就不能使用<code>gpinitsystem -S</code>初始化mirror，可以在初始化Greenplum系统之后手动添加mirror<br>并且在要手动配置mirror又要添加standby master时<br>要先添加segment mirror再添加master mirror（即standby master）</strong></p>
@@ -212,6 +240,7 @@
 <p>详细查看<code>gpinitstandby</code><a href="http://gpdb.docs.pivotal.io/530/utility_guide/admin_utilities/gpinitstandby.html" target="_blank" rel="noopener">官方文档</a></p>
 <h2 id="授权远程连接"><a href="#授权远程连接" class="headerlink" title="授权远程连接"></a>授权远程连接</h2><p>在<code>$MASTER_DATA_DIRECTORY/pg_hba.conf</code>文件末尾，添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host    all     all     0.0.0.0/0       md5</span><br></pre></td></tr></table></figure></p>
 <p>表示开放所有数据库，所有端口给所有用户<br>可以指定ip及用户</p>
+<h2 id="gpadmin远程连接"><a href="#gpadmin远程连接" class="headerlink" title="gpadmin远程连接"></a>gpadmin远程连接</h2><p>使用<code>gpadmin</code>用户远程连接时，如果使用默认的密码登陆会被拒绝。<br>修改密码后可以登陆。</p>
 <h2 id="提示Out-of-Sync"><a href="#提示Out-of-Sync" class="headerlink" title="提示Out of Sync"></a>提示Out of Sync</h2><p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search rsync</span><br></pre></td></tr></table></figure></p>
 <p>搜索rsync<br>安装<code>rsync</code>，<code>librsync</code>以及<code>librsync-devel</code></p>
 <p><a href="https://shilin.deviantart.com/art/AU-cover-685315216" target="_blank" rel="noopener"><img src="https://orig00.deviantart.net/82b0/f/2017/159/3/7/au_cover_by_shilin-dbc0ols.png" alt="AU cover"></a></p>
