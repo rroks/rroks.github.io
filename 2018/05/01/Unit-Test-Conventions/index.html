@@ -255,6 +255,7 @@
 <li><p>Use long and descriptive names for testing functions. The style guide here is slightly different than that of running code, where short names are often preferred. The reason is testing functions are never called explicitly. square() or even sqr() is ok in running code, but in testing code you would have names such as test_square_of_number_2(), test_square_negative_number(). These function names are displayed when a test fails, and should be as descriptive as possible.</p>
 <ul>
 <li>尽量用长一点的、自描述的测试函数名。测试代码和偏好短小名称、经常运行的代码不同。测试函数不是总被精确地调用。Square() 或者 sqr() 再运行的时候没有问题，但是在测试的时候，你最好使用诸如 test_square_of_number_2(), test_square_negative_number() 这样的名称。当测试失败的时候，这些函数名称会被显示出来，因此他们最好能是描述性的。</li>
+<li>长函数名虽然会使代码看起来比较厚重，但是因为这不是业务代码而是带有一点点文档性质的东西，一点小小的平衡是值得的。这和第十条是相互补充的。代码的逻辑应该足够清晰、简洁，函数名称则倾向于拥有较强的描述性，清楚地表达意图。</li>
 </ul>
 </li>
 <li><p>When something goes wrong or has to be changed, and if your code has a good set of tests, you or other maintainers will rely largely on the testing suite to fix the problem or modify a given behavior. Therefore the testing code will be read as much as or even more than the running code. A unit test whose purpose is unclear is not very helpful in this case.</p>
