@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+          My life for si,
+          though we can never go back.
+          Fen Ch
+    -->
+
+    <!-- @
+                                                       ▄              ▄
+                                                      ▌▒█           ▄▀▒▌
+            wow                                       ▌▒▒█        ▄▀▒▒▒▐
+                                                     ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+                                                   ▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+                such code                         ▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌
+                                                ▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌
+                                                ▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+                                               ▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌
+                                               ▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌
+                          very html           ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐
+                                              ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
+                                              ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐
+                much css                       ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌
+                                               ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐
+                                                ▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌
+                              so meta             ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+                                                     ▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+                                                      ░▒▒▒▒▒▒▒▒▒▒▀▀
+    -->
+
+    <!--Description-->
+    
+        <meta name="description" content="Fen is here.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Fen Chy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Build And Install HAWQ"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Fen is here." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="FenC"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Build And Install HAWQ - FenC</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">-.-. -.-.</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/rroks">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/0004.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Build And Install HAWQ</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-05-14
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fstonebank%2Fstonebank-whats-going-down&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
+<p>官方指南：<br><a href="https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install#tab-yum" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install#tab-yum</a></p>
+<p>以下内容使用的操作系统为 CentOS7.2</p>
+<h1 id="Dependencies-安装依赖"><a href="#Dependencies-安装依赖" class="headerlink" title="Dependencies 安装依赖"></a>Dependencies 安装依赖</h1><p>wget <a href="https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm" target="_blank" rel="noopener">https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</a><br>rpm -ivh epel-release-latest-7.noarch.rpm</p>
+<ul>
+<li>For CentOs 7 the link is <a href="https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm" target="_blank" rel="noopener">https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm</a><br>  <a href="https://fedoraproject.org/wiki/EPEL/zh-cn" target="_blank" rel="noopener">https://fedoraproject.org/wiki/EPEL/zh-cn</a> fedora 提供了中文页面可供查询。提供的 CentOS 可用的7.9版本文件会提示不存在。当前我得到的版本是7.11。</li>
+</ul>
+<p>安装依赖：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y man passwd sudo tar which git mlocate links make bzip2 net-tools autoconf automake libtool m4 gcc gcc-c++ gdb bison flex gperf maven indent libuuid-devel krb5-devel libgsasl-devel expat-devel libxml2-devel perl-ExtUtils-Embed pam-devel python-devel libcurl-devel snappy-devel thrift-devel libyaml-devel libevent-devel bzip2-devel openssl-devel openldap-devel protobuf-devel readline-devel net-snmp-devel apr-devel libesmtp-devel python-pip json-c-devel java-1.7.0-openjdk-devel lcov cmake3 openssh-clients openssh-server perl-JSON perl-Env</span><br></pre></td></tr></table></figure>
+<pre><code>1. 如果虚拟机上无法粘贴需要手动输入，一定要注意所有依赖都被安装
+2. bison 不要使用 yum 安装。yum 安装的 bison 为3.0，而 hawq需要2.x版本的 bison，安装过程中会报错。前往 GNU 下载 [GNU Bison](https://www.gnu.org/software/bison/)。
+3. yum 下载的 openjdk 为32位的 jdk，在64位系统上安装时会提示堆内存不足。一般是由于内存太小引起的。可以通过设置堆大小解决，也可以通过安装64位 jdk 解决。这主要取决于内存大小。jdk7 和8都可以使用，但是9及以上不可用，会报错。
+</code></pre><ul>
+<li>need tomcat6 if enable-rps</li>
+<li>download from <a href="http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.44/" target="_blank" rel="noopener">http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.44/</a><ul>
+<li>如果要使用 rps 需要手动安装 tomcat6。</li>
+</ul>
+</li>
+</ul>
+<p>ln -s /usr/bin/cmake3 /usr/bin/cmake<br>pip –retries=50 –timeout=300 install pycrypto</p>
+<h1 id="OS-requirement-操作系统设置"><a href="#OS-requirement-操作系统设置" class="headerlink" title="OS requirement 操作系统设置"></a>OS requirement 操作系统设置</h1><ul>
+<li><p>use a text editor to edit the /etc/sysctl.conf file. Add or edit each of the following parameter definitions to set the required value. </p>
+<ul>
+<li>用文本编辑器修改系统配置文件<code>/etc/sysctl.conf</code>，添加或编辑以下参数：<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">kernel.shmmax = <span class="number">1000000000</span></span><br><span class="line">kernel.shmmni = <span class="number">4096</span></span><br><span class="line">kernel.shmall = <span class="number">4000000000</span></span><br><span class="line">kernel.sem = <span class="number">250</span> <span class="number">512000</span> <span class="number">100</span> <span class="number">2048</span></span><br><span class="line">kernel.sysrq = <span class="number">1</span></span><br><span class="line">kernel.core_uses_pid = <span class="number">1</span></span><br><span class="line">kernel.msgmnb = <span class="number">65536</span></span><br><span class="line">kernel.msgmax = <span class="number">65536</span></span><br><span class="line">kernel.msgmni = <span class="number">2048</span></span><br><span class="line">net.ipv4.tcp_syncookies = <span class="number">0</span></span><br><span class="line">net.ipv4.<span class="keyword">conf</span>.default.accept_source_route = <span class="number">0</span></span><br><span class="line">net.ipv4.tcp_tw_recycle = <span class="number">1</span></span><br><span class="line">net.ipv4.tcp_max_syn_backlog = <span class="number">200000</span></span><br><span class="line">net.ipv4.<span class="keyword">conf</span>.<span class="keyword">all</span>.arp_filter = <span class="number">1</span></span><br><span class="line">net.ipv4.ip_local_port_range = <span class="number">1281</span> <span class="number">65535</span></span><br><span class="line">net.core.netdev_max_backlog = <span class="number">200000</span></span><br><span class="line"><span class="keyword">vm</span>.overcommit_memory = <span class="number">2</span></span><br><span class="line">fs.nr_open = <span class="number">3000000</span></span><br><span class="line">kernel.threads-<span class="built_in">max</span> = <span class="number">798720</span></span><br><span class="line">kernel.pid_max = <span class="number">798720</span></span><br><span class="line"># increase network</span><br><span class="line">net.core.rmem_max=<span class="number">2097152</span></span><br><span class="line">net.core.wmem_max=<span class="number">2097152</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Execute the following command to apply your updated /etc/sysctl.conf file to the operating system configuration:</p>
+<ul>
+<li>执行如下指令应用刚才的系统配置：<br><code>sysctl -p</code></li>
+</ul>
+</li>
+<li><p>Use a text editor to edit the /etc/security/limits.conf file. Add the following definitions in the exact order that they are listed</p>
+</li>
+<li>( Please make sure fs.nr_open = 3000000 is applied before edit limits.conf, else you may not able to ssh to your instance.)<ul>
+<li>使用文本编辑器编辑<code>/etc/security/limits.conf</code>，按照如下顺序添加下列参数：</li>
+<li>（确保<code>fs.nr_open = 3000000</code>在之前已经被设置，否则可能无法<code>ssh</code>连接到实例。<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* soft nofile <span class="number">2900000</span></span><br><span class="line">* hard nofile <span class="number">2900000</span></span><br><span class="line">* soft nproc <span class="number">131072</span></span><br><span class="line">* hard nproc <span class="number">131072</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Build-optional-extension-modules-添加扩展模块"><a href="#Build-optional-extension-modules-添加扩展模块" class="headerlink" title="Build optional extension modules 添加扩展模块"></a>Build optional extension modules 添加扩展模块</h1><p>gporca 是 Greenplum 实现的查询优化器，通过<code>./configure --enable-orca</code>添加。pgcrypto 是加密工具，通过<code>./configure --with-pgcrypto --with-openssl</code>添加。其他扩展模块，查看官方指南。</p>
+<h1 id="Install-Hadoop-安装-Hadoop"><a href="#Install-Hadoop-安装-Hadoop" class="headerlink" title="Install Hadoop 安装 Hadoop"></a>Install Hadoop 安装 Hadoop</h1><p>Please follow the steps here:[Hadoop: Setting up a Single Node Cluster (ver 2.9.0).] (<a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html" target="_blank" rel="noopener">https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html</a>)</p>
+<ul>
+<li>You will also need to set  the port for fs.defaultFS to 8020 in etc/hadoop/core-site.xml (The example above set it as 9000.)</li>
+<li><p>HDFS is a must, but YARN is optional. YARN is only needed when you want to use YARN as the global resource manager.</p>
+<ul>
+<li>为了避免不必要的麻烦，Hadoop 使用官方说明的 2.9.0。</li>
+<li>Hadoop 的官方文档没有将 Hadoop 路径添加到系统环境变量，所以使用 Hadoop 要么位于其目录下，要么将其添加到系统环境变量。</li>
+<li>需要将<code>core-site.xml</code>中的<code>fs.defaultFS</code>设为8020，Hadoop 官方文档的例子设置成了9000。</li>
+<li>HDFS 必须要安装，但是 YARN 是可选的。HAWQ 有默认的资源管理器。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Get-the-HAWQ-code-and-Compile-获取和安装-HAWQ"><a href="#Get-the-HAWQ-code-and-Compile-获取和安装-HAWQ" class="headerlink" title="Get the HAWQ code and Compile 获取和安装 HAWQ"></a>Get the HAWQ code and Compile 获取和安装 HAWQ</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> The Apache HAWQ source code can be obtained from the the following link: </span><br><span class="line"><span class="meta">#</span> Apache Repo: https://git-wip-us.apache.org/repos/asf/incubator-hawq.git or </span><br><span class="line"><span class="meta">#</span> GitHub Mirror: https://github.com/apache/incubator-hawq.</span><br><span class="line">git clone https://git-wip-us.apache.org/repos/asf/incubator-hawq.git</span><br></pre></td></tr></table></figure>
+<pre><code>1. HAWQ 可以从 Apache 的分支获取，也可以从 Github 获取镜像。
+2. 总大小大约160MB
+</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> The code directory is incubator-hawq.</span><br><span class="line">CODE_BASE=`pwd`/incubator-hawq</span><br></pre></td></tr></table></figure>
+<pre><code>CODE_BASE 是 incubator-hawq 源码的位置。进入文件夹进行配置。
+</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Run command to generate makefile.</span><br><span class="line"><span class="meta">#</span> Or you could use --prefix=/hawq/install/path to change the Apache HAWQ install path, </span><br><span class="line"><span class="meta">#</span> and you can also add some optional components using options (--with-python --with-perl)</span><br><span class="line">./configure</span><br></pre></td></tr></table></figure>
+<pre><code>1. 要在 incubator-hawq 文件夹下执行命令。
+2. `--prefix`用来指定安装路径，可以放在`/usr/local/hawq`。
+3. 其他依赖可以在官方指南查询。
+</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Run command to build and install</span><br><span class="line"><span class="meta">#</span> To build concurrently , run make with -j option. For example, make -j8</span><br><span class="line"><span class="meta">#</span> On Linux system without large memory, you will probably encounter errors like</span><br><span class="line"><span class="meta">#</span> "Error occurred during initialization of VM" and/or "Could not reserve enough space for object heap"</span><br><span class="line"><span class="meta">#</span> and/or "out of memory", try to set vm.overcommit_memory = 1 temporarily, and/or avoid "-j" build,</span><br><span class="line"><span class="meta">#</span> and/or add more memory and then rebuild.</span><br><span class="line"><span class="meta">#</span> On mac os, you will probably see this error: "'openssl/ssl.h' file not found".</span><br><span class="line"><span class="meta">#</span> "brew link openssl --force" should be able to solve the issue.</span><br><span class="line">make -j8</span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span> Install HAWQ</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<pre><code>1. `-j8`用于指示进行并发安装。会导致一系列问题（如“Could not reserve enough space for object heap”）。避免使用`-j`参数来避免问题。
+2. 最简单的方法永远是用更大的内存。
+3. 官方文档没有提到，但是 HAWQ 是基于 Greenplum 的，安装完成后，可能需要将目录的所有者变更为`gpadmin`。
+</code></pre><h1 id="Init-Start-Stop-HAWQ"><a href="#Init-Start-Stop-HAWQ" class="headerlink" title="Init/Start/Stop HAWQ"></a>Init/Start/Stop HAWQ</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Before initializing HAWQ, you need to install HDFS and make sure it works.</span><br><span class="line"> </span><br><span class="line">source /hawq/install/path/greenplum_path.sh</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> Besides you need to set password-less ssh on the systems.</span><br><span class="line"><span class="meta">#</span> Exchange SSH keys between the hosts host1, host2, and host3:</span><br><span class="line">hawq ssh-exkeys -h host1 -h host2 -h host3</span><br><span class="line">hawq init cluster # after initialization, HAWQ is started by default</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> Now you can stop/restart/start the cluster by using:  </span><br><span class="line">hawq stop/restart/start cluster</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> HAWQ master and segments are completely decoupled. So you can also init, start or stop the master and segments separately.</span><br><span class="line"><span class="meta">#</span> For example, to init: hawq init master, then hawq init segment</span><br><span class="line"><span class="meta">#</span> to stop: hawq stop master, then hawq stop segment</span><br><span class="line"><span class="meta">#</span> to start: hawq start master, then hawq start segment</span><br></pre></td></tr></table></figure>
+<pre><code>1. 添加 greenplum_path.sh 到系统环境变量。
+2. 文档没有提及，但是初始化应该是需要配置集群的。暂未补上。
+3. HAWQ 的 master 和 segment 是独立开的。可以单独对 master 和 segment 进行开关操作。
+</code></pre><h1 id="Connect-and-Run-basic-queries-连接和运行"><a href="#Connect-and-Run-basic-queries-连接和运行" class="headerlink" title="Connect and Run basic queries 连接和运行"></a>Connect and Run basic queries 连接和运行</h1><p><strong>后续步骤尚未确定，等待实际环境部署尝试后更新</strong></p>
+<p><a href="https://soundcloud.com/yesofficial/yes-roundabout" target="_blank" rel="noopener">&lt;– To Be Continued</a></p>
+<p><a href="https://www.artstation.com/artwork/rQqxO" target="_blank" rel="noopener"><img src="https://cdna.artstation.com/p/assets/images/images/010/505/030/large/daytoner-daniel-hahn-asset.jpg?1524768374" alt="NYN-Yaah // Code Nine"></a></p>
+<p>..-. . -.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/rroks" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 Fen Chy<br></p>
+                <p class="copyright text-muted">
+                    <a target="_blank" href="http://www.gu6s.top/">闪电的6s</a>
+                    <a target="_blank" href="http://gzh.autyan.net/">6s掌控雷电</a>
+                    <a target="_blank" href="http://58.87.72.131:8080/w/hello">w</a>
+                    <a target="_blank" href="http://druid.pub/">常威说他缺911</a>
+                    <a target="_blank" href="http://www.yulaiz.com/">地王</a>
+                    <a target="_blank" href="http://ikoala.net/">考拉</a>
+                    <a target="_blank" href="http://baobaolei.cn/">大银蛇</a>
+                    <a target="_blank" href="http://baobaolei.cn/">bydmm</a>
+                    <a target="_blank" href="http://blog.autyan.com/">.net hentai</a>
+                    <br>
+                </p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
