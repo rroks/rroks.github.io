@@ -213,7 +213,7 @@
                 <script src="/assets/js/APlayer.min.js"> </script><iframe width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fstonebank%2Fstonebank-whats-going-down&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&color=ff5500&show_artwork=true"></iframe>
 <p>官方指南：<br><a href="https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install#tab-yum" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install#tab-yum</a></p>
 <p>以下内容使用的操作系统为 CentOS7.2</p>
-<h1 id="Dependencies-安装依赖"><a href="#Dependencies-安装依赖" class="headerlink" title="Dependencies 安装依赖"></a>Dependencies 安装依赖</h1><p>wget <a href="https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm" target="_blank" rel="noopener">https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</a><br>rpm -ivh epel-release-latest-7.noarch.rpm</p>
+<h1 id="Dependencies-安装依赖"><a href="#Dependencies-安装依赖" class="headerlink" title="Dependencies 安装依赖"></a>Dependencies 安装依赖</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br></pre></td></tr></table></figure>
 <ul>
 <li>For CentOs 7 the link is <a href="https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm" target="_blank" rel="noopener">https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm</a><br>  <a href="https://fedoraproject.org/wiki/EPEL/zh-cn" target="_blank" rel="noopener">https://fedoraproject.org/wiki/EPEL/zh-cn</a> fedora 提供了中文页面可供查询。提供的 CentOS 可用的7.9版本文件会提示不存在。当前我得到的版本是7.11。</li>
 </ul>
@@ -229,7 +229,7 @@
 </ul>
 </li>
 </ul>
-<p>ln -s /usr/bin/cmake3 /usr/bin/cmake<br>pip –retries=50 –timeout=300 install pycrypto</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/bin/cmake3 /usr/bin/cmake</span><br><span class="line">pip --retries=50 --timeout=300 install pycrypto</span><br></pre></td></tr></table></figure>
 <h1 id="OS-requirement-操作系统设置"><a href="#OS-requirement-操作系统设置" class="headerlink" title="OS requirement 操作系统设置"></a>OS requirement 操作系统设置</h1><ul>
 <li><p>use a text editor to edit the /etc/sysctl.conf file. Add or edit each of the following parameter definitions to set the required value. </p>
 <ul>
@@ -252,7 +252,7 @@
 </li>
 </ul>
 <h1 id="Build-optional-extension-modules-添加扩展模块"><a href="#Build-optional-extension-modules-添加扩展模块" class="headerlink" title="Build optional extension modules 添加扩展模块"></a>Build optional extension modules 添加扩展模块</h1><p>gporca 是 Greenplum 实现的查询优化器，通过<code>./configure --enable-orca</code>添加。pgcrypto 是加密工具，通过<code>./configure --with-pgcrypto --with-openssl</code>添加。其他扩展模块，查看官方指南。</p>
-<h1 id="Install-Hadoop-安装-Hadoop"><a href="#Install-Hadoop-安装-Hadoop" class="headerlink" title="Install Hadoop 安装 Hadoop"></a>Install Hadoop 安装 Hadoop</h1><p>Please follow the steps here:[Hadoop: Setting up a Single Node Cluster (ver 2.9.0).] (<a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html" target="_blank" rel="noopener">https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html</a>)</p>
+<h1 id="Install-Hadoop-安装-Hadoop"><a href="#Install-Hadoop-安装-Hadoop" class="headerlink" title="Install Hadoop 安装 Hadoop"></a>Install Hadoop 安装 Hadoop</h1><p>Please follow the steps here: <a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html" target="_blank" rel="noopener">Hadoop: Setting up a Single Node Cluster ver 2.9.0.</a>.</p>
 <ul>
 <li>You will also need to set  the port for fs.defaultFS to 8020 in etc/hadoop/core-site.xml (The example above set it as 9000.)</li>
 <li><p>HDFS is a must, but YARN is optional. YARN is only needed when you want to use YARN as the global resource manager.</p>
